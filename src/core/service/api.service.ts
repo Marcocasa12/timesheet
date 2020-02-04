@@ -6,7 +6,7 @@ import { Observable } from "rxjs";
   providedIn: "root"
 })
 export class ApiService {
-  private readonly host = "https://its-timesheet-backend.herokuapp.com";
+  private readonly host = "http://localhost:8090/api";
   constructor(private http: HttpClient) {}
 
   public get(path: string): Observable<any> {

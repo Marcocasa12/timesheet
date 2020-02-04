@@ -89,7 +89,7 @@ export class DipendentiPageComponent implements OnInit {
 
   ngOnInit() {
     this.dipendenteService.getAll().subscribe(res => {
-      this.lista = res;
+      this.lista = res.response.dipendentiData;
     });
     this.api.get("employees").subscribe(res => {
       console.log(res);
