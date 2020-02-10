@@ -21,14 +21,6 @@ export class DipendentiPageComponent implements OnInit {
         name: "surname"
       },
       {
-        label: "City",
-        name: "city"
-      },
-      {
-        label: "Gender",
-        name: "gender"
-      },
-      {
         label: "Email",
         name: "email"
       }
@@ -92,7 +84,7 @@ export class DipendentiPageComponent implements OnInit {
       this.lista = res.response.dipendentiData;
     });
     this.api.get("employees").subscribe(res => {
-      console.log(res);
+      console.log(this.lista);
     });
   }
 

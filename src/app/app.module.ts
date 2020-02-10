@@ -12,9 +12,19 @@ import { EditDipendentiPageComponent } from "./pages/edit-dipendenti-page/edit-d
 
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { RegisterPageComponent } from './pages/register-page/register-page.component';
+import { CardModule } from 'primeng/card';
+import {InputTextModule} from 'primeng/inputtext';
+import {PasswordModule} from 'primeng/password';
+import { AuthenticationGuard } from './shared/guard/authentication.guard';
+import { AuthenticationService } from './shared/services/authentication.service';
+
 @NgModule({
   declarations: [
     AppComponent,
+    LoginPageComponent,
+    RegisterPageComponent,
     HomePageComponent,
     DipendentiPageComponent,
     DettaglioDipendentiPageComponent,
@@ -27,9 +37,12 @@ import { HttpClientModule } from "@angular/common/http";
     SharedModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CardModule,
+    InputTextModule,
+    PasswordModule
   ],
-  providers: [],
+  providers: [AuthenticationGuard, AuthenticationService],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

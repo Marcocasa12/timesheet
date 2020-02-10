@@ -1,0 +1,33 @@
+<div  class="container" style="margin-left: 500px;">
+    <p-card header="REGISTER" [style]="{width: '360px'}" styleClass="ui-card-shadow">
+        <p-header>
+            <img src="Card" src="assets/images/logo.jpg">
+        </p-header>
+        <div>
+          <span class="ui-float-label">
+              <input id="user" type="text" size="30" pInputText> 
+              <label for="user">Username</label>
+          </span>
+          <br>
+          <span class="ui-float-label">
+              <input pPassword type="password" size="30">
+              <label for="float-input">Password</label>
+          </span>
+          <br>
+          <span class="ui-float-label">
+              <input pPassword type="password" size="30">
+              <label for="float-input">Conferma Password</label>
+          </span>
+          <br>
+          <span class="ui-float-label">
+              <input id="user" type="text" size="30" pInputText> 
+              <label for="user">Email</label>
+          </span>
+        </div>
+        <p-footer>
+            
+            
+            <button pButton type="button" label="Save" icon="pi pi-check" style="margin-right: .25em" (click)="onClick()"><i class="pi pi-check">Login</i></button>
+        </p-footer>
+      </p-card>
+</div>
