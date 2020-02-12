@@ -1,22 +1,27 @@
-<p-card header="LOGIN" [style]="{width: '360px'}" styleClass="ui-card-shadow">
-  <p-header>
-    <img src="Card" src="assets/images/logo.jpg">
-  </p-header>
-  <div>
-    <span class="ui-float-label">
-      <input id="user" type="text" size="30" pInputText>
-      <label for="user">Username</label>
-    </span>
-    <br>
-    <span class="ui-float-label">
-      <input pPassword type="password" size="30">
-      <label for="float-input">Password</label>
-    </span>
-  </div>
-  <p-footer>
-    <button pButton type="button" label="Save" icon="pi pi-check" style="margin-right: .25em" (click)="onClick()"><i
-        class="pi pi-check">Login</i></button> 
+<div class="container" style="margin-left: 520px;">
+  <p-card header="LOGIN" [style]="{width: '360px'}" styleClass="ui-card-shadow">
+    <p-header>
+      <img src="Card" src="assets/images/logo.jpg">
+    </p-header>
+    <div>
+      <form [formGroup]="loginForm">
+        <span class="ui-float-label">
+          <input id="user" type="text" size="30" formControlName="username" pInputText>
+          <label for="user">Username</label>
+        </span>
         <br>
-        <a href="register">Register</a>
-  </p-footer>
-</p-card>
+        <span class="ui-float-label">
+          <input pPassword type="password" size="30" formControlName="password" >
+          <label for="float-input">Password</label>
+        </span></form>
+
+    </div>
+    <p-footer>
+      <button [disabled]="!this.loginForm.valid" pButton type="button" label="Save" icon="pi pi-check" style="margin-right: .25em" (click)="onLogin()"><i
+          class="pi pi-check">Login</i></button>
+      <br>
+      <button type="button" class="btn btn-secondar" style="background-color: transparent;"
+        (click)="onClickRegister()">Register</button>
+    </p-footer>
+  </p-card>
+</div>

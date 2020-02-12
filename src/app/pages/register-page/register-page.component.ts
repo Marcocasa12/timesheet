@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterLink, Router } from '@angular/router';
+
 
 @Component({
   selector: 'register-home-page',
@@ -7,8 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(public router:Router) { }
 
   ngOnInit() {
+  }
+  onClickLogin(){
+    this.router.navigate(['login']);
   }
 }

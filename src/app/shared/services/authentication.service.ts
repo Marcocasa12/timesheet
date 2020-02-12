@@ -3,6 +3,7 @@ import { Injectable, Inject } from '@angular/core';
 import { from as observableFrom, of as observableOf, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { ApiService } from "src/core/service/api.service";
 
 
 export interface Credentials {
@@ -27,11 +28,13 @@ export class AuthenticationService {
 
   public token: boolean = false;
 
+  private path: string = "userController";
+
   private _credentials: string;
   private _features: any = null;
   
   constructor(
-    private router: Router) {
+    private router: Router, public api: ApiService) {
     this._credentials = localStorage.getItem(credentialsKey);
   }
 
@@ -40,11 +43,8 @@ export class AuthenticationService {
    * @param {LoginContext} context The login parameters.
    * @return {Observable<Credentials>} The user credentials.
    */
-  login(context: LoginContext): Observable<any> {
-    let bodyString = JSON.stringify(context); // Stringify payload
-    let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
-    
-    return null;
+  login(param: any): Observable<any> {    
+    return this.api.post(this.path + "/login", param);
   }
 
   /**
