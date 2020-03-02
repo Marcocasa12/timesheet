@@ -12,7 +12,7 @@ export class DipendentiService {
     return this.api.get(this.path);
   }
   getById(id: string) {
-    return this.api.get(this.path + "/" + id);
+    return this.api.get(this.path + "/fetchOnce/employee/" + id);
   }
   add(item: any): Observable<any> {
     const obj = { ...item };

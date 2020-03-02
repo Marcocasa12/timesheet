@@ -24,13 +24,13 @@ export class NewDipendentiPageComponent implements OnInit {
 
   ngOnInit() {
     this.country.getAll().subscribe(res => {
-      this.allCountry = res;
+      this.allCountry = res.response;
       this.country.getRegionInCountry(this.allCountry[0].iso).subscribe(res => {
-        this.regions = res;
+        this.regions = res.response;
         this.country
           .getCitiesInRegion(this.regions[0].description)
           .subscribe(res => {
-            this.cities = res;
+            this.cities = res.response;
             this.formgroup = this.fb.group({
               name: [""],
               surname: [""],
@@ -54,7 +54,7 @@ export class NewDipendentiPageComponent implements OnInit {
   }
   updateRegion(event: any) {
     this.country.getRegionInCountry(event.target.value).subscribe(res => {
-      this.regions = res;
+      this.regions = res.response;
       this.formgroup = this.fb.group({
         name: [this.formgroup.value.name],
         surname: [this.formgroup.value.surname],
@@ -76,7 +76,7 @@ export class NewDipendentiPageComponent implements OnInit {
   }
   updateCity(event: any) {
     this.country.getCitiesInRegion(event.target.value).subscribe(res => {
-      this.cities = res;
+      this.cities = res.response;
       console.log(res);
       this.formgroup = this.fb.group({
         name: [this.formgroup.value.name],

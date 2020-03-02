@@ -7,7 +7,7 @@
             <app-filter [colsOption]="keys" class="px-3" (onFilter)="filter($event)"></app-filter>
           </div>
           <div class="col px-0 rounded" style="overflow: auto;">
-            <app-datatable [lista]="lista" [options]="options" selectiontype="single" style="display: flex; flex:1"
+            <app-datatable [lista]="lista" [options]="options" selectiontype="none" style="display: flex; flex:1"
               (selectRows)="select($event)" [delete]="true" [edit]="true" (onDeleteEvent)="onDeleteHandler($event)"
               (onEditEvent)="onEditHandler($event)">
             </app-datatable>

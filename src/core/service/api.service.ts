@@ -13,13 +13,13 @@ export class ApiService {
     return this.http.get(this.host + "/" + path);
   }
   public post(path: string, bodyObj: any): Observable<any> {
-    return this.http.post(this.host + "/" + path, bodyObj);
+    return this.http.post(this.host + "/" + path + "/add", bodyObj);
   }
   public delete(path: string, id: string): Observable<any> {
-    return this.http.delete(this.host + "/" + path + "/" + id);
+    return this.http.delete(this.host + "/" + path + "/delete/" + id);
   }
   public replace(path: string, id: string, body: any): Observable<any> {
-    return this.http.patch(this.host + "/" + path + "/" + id, body);
+    return this.http.patch(this.host + "/" + path + "/update"/* + id*/, body);
   }
   public filter(path: string, key: string, value: any) {
     if (value) {

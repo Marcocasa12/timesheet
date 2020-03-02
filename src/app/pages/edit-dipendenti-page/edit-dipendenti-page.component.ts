@@ -28,12 +28,13 @@ export class EditDipendentiPageComponent implements OnInit {
   ngOnInit() {
     this.id = this.routeActive.snapshot.params.id;
     this.dipendente.getById(this.id).subscribe(dipendente => {
+      dipendente = dipendente.response;
       this.country.getAll().subscribe(res => {
-        this.allCountry = res;
+        this.allCountry = res.response;
         this.country.getRegionInCountry(dipendente.country).subscribe(res => {
-          this.regions = res;
+          this.regions = res.response;
           this.country.getCitiesInRegion(dipendente.province).subscribe(res => {
-            this.cities = res;
+            this.cities = res.response;
             this.formgroup = this.fb.group({
               name: [dipendente.name],
               surname: [dipendente.surname],
@@ -61,7 +62,7 @@ export class EditDipendentiPageComponent implements OnInit {
 
   updateRegion(event: any) {
     this.country.getRegionInCountry(event.target.value).subscribe(res => {
-      this.regions = res;
+      this.regions = res.response;
       this.formgroup = this.fb.group({
         name: [this.formgroup.value.name],
         surname: [this.formgroup.value.surname],
@@ -84,7 +85,7 @@ export class EditDipendentiPageComponent implements OnInit {
   updateCity(event: any) {
     this.country.getCitiesInRegion(event.target.value).subscribe(res => {
       console.log(res);
-      this.cities = res;
+      this.cities = res.response;
       this.formgroup = this.fb.group({
         name: [this.formgroup.value.name],
         surname: [this.formgroup.value.surname],

@@ -95,7 +95,7 @@ export class DipendentiPageComponent implements OnInit {
   onDeleteHandler(id: any) {
     this.dipendenteService.deleteById(id).subscribe(r => {
       this.dipendenteService.getAll().subscribe(res => {
-        this.lista = res;
+        this.lista = res.response.dipendentiData;
       });
     });
   }
@@ -106,8 +106,8 @@ export class DipendentiPageComponent implements OnInit {
     console.log(res);
     this.dipendenteService
       .filter(res.key, res.filter)
-      .subscribe((res: any[]) => {
-        this.lista = res;
+      .subscribe((res: any) => {
+        this.lista = res.response.dipendentiData;
       });
   }
 }

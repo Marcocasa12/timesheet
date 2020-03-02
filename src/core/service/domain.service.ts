@@ -8,7 +8,7 @@ import { Observable } from "rxjs";
 export class DomainService {
   constructor(private api: ApiService) {}
   private readonly countries = "countries";
-  private readonly region = "region";
+  private readonly region = "regions";
   private readonly cities = "cities";
 
   public getAll(): Observable<any> {
@@ -18,10 +18,10 @@ export class DomainService {
     return this.api.get(this.countries + "?iso=" + iso);
   }
   getRegionInCountry(iso) {
-    return this.api.get(this.region + "?coutryIso=" + iso);
+    return this.api.get(this.region/* + "?coutryIso=" + iso*/);
   }
   getCitiesInRegion(region) {
-    return this.api.get(this.cities + "?regionDescription=" + region);
+    return this.api.get(this.cities/* + "?regionDescription=" + region*/);
   }
   getCountryByKey(key, value) {
     return this.api.get(this.countries + "?" + key + "=" + value);
