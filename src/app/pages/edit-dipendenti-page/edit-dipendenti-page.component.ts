@@ -28,7 +28,9 @@ export class EditDipendentiPageComponent implements OnInit {
   ngOnInit() {
     this.id = this.routeActive.snapshot.params.id;
     this.dipendente.getById(this.id).subscribe(dipendente => {
-      dipendente = dipendente.response;
+      console.log("dioladro" + dipendente);
+      dipendente = dipendente.response.dipendentiDato;
+      console.log(dipendente);
       this.country.getAll().subscribe(res => {
         this.allCountry = res.response;
         this.country.getRegionInCountry(dipendente.country).subscribe(res => {
@@ -40,8 +42,8 @@ export class EditDipendentiPageComponent implements OnInit {
               surname: [dipendente.surname],
               taxCode: [dipendente.taxCode],
               country: [dipendente.country],
-              city: [dipendente.city],
               province: [dipendente.province],
+              city: [dipendente.city],
               phoneNumber: [dipendente.phoneNumber],
               address: [dipendente.address],
               gender: [dipendente.gender],
@@ -68,8 +70,8 @@ export class EditDipendentiPageComponent implements OnInit {
         surname: [this.formgroup.value.surname],
         taxCode: [this.formgroup.value.taxCode],
         country: [this.formgroup.value.country],
-        city: [this.formgroup.value.city],
         province: [this.regions[0].description],
+        city: [this.formgroup.value.city],
         phoneNumber: [this.formgroup.value.phoneNumber],
         address: [this.formgroup.value.address],
         gender: [this.formgroup.value.gender],
@@ -91,8 +93,8 @@ export class EditDipendentiPageComponent implements OnInit {
         surname: [this.formgroup.value.surname],
         taxCode: [this.formgroup.value.taxCode],
         country: [this.formgroup.value.country],
-        city: [this.cities[0].description],
         province: [this.formgroup.value.province],
+        city: [this.cities[0].description],
         phoneNumber: [this.formgroup.value.phoneNumber],
         address: [this.formgroup.value.address],
         gender: [this.formgroup.value.gender],
