@@ -77,7 +77,6 @@ export class NewDipendentiPageComponent implements OnInit {
   updateCity(event: any) {
     this.country.getCitiesInRegion(event.target.value).subscribe(res => {
       this.cities = res.response;
-      console.log(res);
       this.formgroup = this.fb.group({
         name: [this.formgroup.value.name],
         surname: [this.formgroup.value.surname],

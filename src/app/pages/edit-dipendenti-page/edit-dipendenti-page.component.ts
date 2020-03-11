@@ -13,7 +13,7 @@ export class EditDipendentiPageComponent implements OnInit {
   public formgroup: FormGroup;
   public soggetto;
   public id;
-  public allCountry: any[]; //
+  public allCountry: any[];
   public regions: any[];
   public cities: any[];
 
@@ -28,9 +28,7 @@ export class EditDipendentiPageComponent implements OnInit {
   ngOnInit() {
     this.id = this.routeActive.snapshot.params.id;
     this.dipendente.getById(this.id).subscribe(dipendente => {
-      console.log("dioladro" + dipendente);
       dipendente = dipendente.response.dipendentiDato;
-      console.log(dipendente);
       this.country.getAll().subscribe(res => {
         this.allCountry = res.response;
         this.country.getRegionInCountry(dipendente.country).subscribe(res => {
@@ -86,7 +84,6 @@ export class EditDipendentiPageComponent implements OnInit {
   }
   updateCity(event: any) {
     this.country.getCitiesInRegion(event.target.value).subscribe(res => {
-      console.log(res);
       this.cities = res.response;
       this.formgroup = this.fb.group({
         name: [this.formgroup.value.name],

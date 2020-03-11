@@ -12,13 +12,13 @@ export class DipendentiService {
     return this.api.get(this.path);
   }
   getById(id: string) {
-    return this.api.get(this.path + "/fetchOnce/employee/" + id);
+    return this.api.get(this.path + "/fetchOnce/employees/" + id);
   }
   add(item: any): Observable<any> {
     const obj = { ...item };
     return this.api.post(this.path, obj);
   }
-  public deleteById(id: string): Observable<any> {
+  deleteById(id: string): Observable<any> {
     return this.api.delete(this.path, id);
   }
   replace(item: any): Observable<any> {
