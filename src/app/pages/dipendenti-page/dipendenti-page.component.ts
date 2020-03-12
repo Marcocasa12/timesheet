@@ -27,52 +27,6 @@ export class DipendentiPageComponent implements OnInit {
     ]
   };
   public lista: any[];
-  public keys = [
-    {
-      label: "Name",
-      name: "name"
-    },
-    {
-      label: "Surname",
-      name: "surname"
-    },
-    {
-      label: "Tax Code",
-      name: "taxCode"
-    },
-    {
-      label: "Country",
-      name: "country"
-    },
-    {
-      label: "Province",
-      name: "province"
-    },
-    {
-      label: "City",
-      name: "city"
-    },
-    {
-      label: "Address",
-      name: "address"
-    },
-    {
-      label: "Phone number",
-      name: "phoneNumber"
-    },
-    {
-      label: "Gender",
-      name: "gender"
-    },
-    {
-      label: "Email",
-      name: "email"
-    },
-    {
-      label: "ID",
-      name: "id"
-    }
-  ];
   constructor(
     public dipendenteService: DipendentiService,
     public router: Router,
@@ -96,9 +50,12 @@ export class DipendentiPageComponent implements OnInit {
   onDeleteHandler(id: any) {
     this.dipendenteService.deleteById(id).subscribe(r => {
       this.dipendenteService.getAll().subscribe(res => {
-        this.lista = res.response.dipendentiData;
+        this.lista = res.response;
+        
+
       });
     });
+   
   }
   onEditHandler(id: any) {
     this.router.navigate(["dipendenti/edit", id]);
@@ -106,9 +63,9 @@ export class DipendentiPageComponent implements OnInit {
   filter(res: any) {
     console.log(res);
     this.dipendenteService
-      .filter(res.key, res.filter)
+      .filter(res.filter)
       .subscribe((res: any) => {
-        this.lista = res.response.dipendentiData;
+        this.lista = res.response;
       });
   }
 }

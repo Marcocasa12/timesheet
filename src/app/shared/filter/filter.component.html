@@ -1,14 +1,6 @@
 <div class="row mb-2">
   <form [formGroup]="formgroup" class="form-inline">
-    <select
-      *ngIf="colsOption"
-      class="browser-default custom-select mx-3"
-      formControlName="key"
-    >
-      <option *ngFor="let options of colsOption" [value]="options.name">{{
-        options.label
-      }}</option>
-    </select>
+
     <input
       class="form-control "
       formControlName="filter"

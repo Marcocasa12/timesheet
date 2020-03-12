@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col">
           <div class="row">
-            <app-filter [colsOption]="keys" class="px-3" (onFilter)="filter($event)"></app-filter>
+            <app-filter  class="px-3" (onFilter)="filter($event)"></app-filter>
           </div>
           <div class="col px-0 rounded" style="overflow: auto;">
             <app-datatable [lista]="lista" [options]="options" selectiontype="none" style="display: flex; flex:1"
