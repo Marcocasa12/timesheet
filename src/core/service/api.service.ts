@@ -19,11 +19,10 @@ export class ApiService {
     return this.http.delete(this.host + "/" + path + "/delete/" + id);
   }
   public replace(path: string, id: string, body: any): Observable<any> {
-    return this.http.patch(this.host + "/" + path + "/update"/* + id*/, body);
+    return this.http.patch(this.host + "/" + path + "/update", body);
   }
   public filter(path: string,value: any) {
     if (value) {
-  
       return this.http.get(this.host + "/" + path + "/filter/" + value);
     } else {
       return this.get(path);

@@ -19,10 +19,6 @@ export class DipendentiPageComponent implements OnInit {
       {
         label: "Surname",
         name: "surname"
-      },
-      {
-        label: "Email",
-        name: "email"
       }
     ]
   };
@@ -61,7 +57,6 @@ export class DipendentiPageComponent implements OnInit {
     this.router.navigate(["dipendenti/edit", id]);
   }
   filter(res: any) {
-    console.log(res);
     this.dipendenteService
       .filter(res.filter)
       .subscribe((res: any) => {

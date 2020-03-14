@@ -10,6 +10,7 @@ import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 })
 export class LoginPageComponent implements OnInit {
   public loginForm: FormGroup;
+  public listaUsr: any[];
 
   constructor(public formBuilder: FormBuilder, public router: Router, public auth: AuthenticationService) {
     this.createLoginForm();
@@ -25,10 +26,15 @@ export class LoginPageComponent implements OnInit {
   }
 
   onLogin() {
-
-    console.log(this.loginForm.controls['username'].value);
-
-    let isUserLogged = this.auth.login(this.loginForm.value);
+    let isUserLogged = this.auth.login(this.loginForm.value).subscribe(r=>{
+      console.log(r.value);
+    });
+    /* this.dipendenteService
+      .filter(res.filter)
+      .subscribe((res: any) => {
+        this.lista = res.response;
+      }); */
+    
     if (isUserLogged) {
       this.auth.setAuthenticated();
       this.router.navigate(['home']), { replaceUrl: true };
