@@ -28,7 +28,7 @@ export class AuthenticationService {
 
   public token: boolean = false;
 
-  private path: string = "userController";
+  private path: string = "user";
 
   private _credentials: string;
   private _features: any = null;
@@ -44,7 +44,7 @@ export class AuthenticationService {
    * @return {Observable<Credentials>} The user credentials.
    */
   login(param: any): Observable<any> {    
-    return this.api.post(this.path + "/login", param);
+    return this.api.filter(this.path + "/login", param);
   }
 
   /**
