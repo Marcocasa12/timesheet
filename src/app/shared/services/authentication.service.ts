@@ -4,6 +4,7 @@ import { from as observableFrom, of as observableOf, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { ApiService } from "src/core/service/api.service";
+import { JwtModule } from "@auth0/angular-jwt";
 
 
 export interface Credentials {
@@ -77,15 +78,14 @@ export class AuthenticationService {
 
   setAuthenticated(usr:any, rl:any): boolean {
     try {
-      this.token = this.genToken;
-      console.log(this.token);
+      this.token = true;
       return (this.token);
     } catch (e) {
       return false;
     }
   }
 
-  genToken(usr: any, rl:any):any {
+  /* genToken(usr: any, rl:any):any {
     var subT = usr;
     var nJwt = require('njwt');
     var secureRandom = require('secure-random');
@@ -99,8 +99,10 @@ export class AuthenticationService {
     }
 
     var jwt = nJwt.create(claims, signingKey);
-  }
 
+    return jwt;
+  }
+ */
 
   /**
    * Gets the user credentials.

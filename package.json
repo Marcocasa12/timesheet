@@ -24,6 +24,7 @@
     "@auth0/angular-jwt": "^4.0.0",
     "bootstrap": "^4.4.1",
     "font-awesome": "^4.7.0",
+    "jsonwebtoken": "^8.5.1",
     "jwt-node": "^0.1.9",
     "njwt": "^0.4.1",
     "primeicons": "^2.0.0",
