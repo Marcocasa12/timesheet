@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
-import { RouterLink, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { UserService } from "src/core/service/user.service";
 
 @Component({
   selector: 'login-home-page',
@@ -10,9 +11,8 @@ import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 })
 export class LoginPageComponent implements OnInit {
   public loginForm: FormGroup;
-  public listaUsr: any[];
 
-  constructor(public formBuilder: FormBuilder, public router: Router, public auth: AuthenticationService) {
+  constructor(public formBuilder: FormBuilder, public router: Router, public auth: AuthenticationService, public userService: UserService) {
     this.createLoginForm();
   }
 
@@ -26,24 +26,17 @@ export class LoginPageComponent implements OnInit {
   }
 
   onLogin() {
-    let isUserLogged = this.auth.login(this.loginForm.value).subscribe(r=>{
-      console.log(r.value);
+    let param = this.loginForm.controls['username'].value + "_" + this.loginForm.controls['password'].value;
+    this.auth.login(param).subscribe(r => {
+      if ((r.response != null)) {
+        this.auth.setAuthenticated(r.response.name, r.response.ruolo);
+        this.router.navigate(['home']), { replaceUrl: true };
+      } else {
+        this.router.navigate(['register']), { replaceUrl: true };
+      }
     });
-    /* this.dipendenteService
-      .filter(res.filter)
-      .subscribe((res: any) => {
-        this.lista = res.response;
-      }); */
-    
-    if (isUserLogged) {
-      this.auth.setAuthenticated();
-      this.router.navigate(['home']), { replaceUrl: true };
-    }else{
-      this.router.navigate(['register']), { replaceUrl: true };
-    }
   }
   onClickRegister() {
     this.router.navigate(['register']), { replaceUrl: true };
   }
-
 }

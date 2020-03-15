@@ -13,6 +13,7 @@ export class ApiService {
     return this.http.get(this.host + "/" + path);
   }
   public post(path: string, bodyObj: any): Observable<any> {
+    console.log(bodyObj);
     return this.http.post(this.host + "/" + path + "/add", bodyObj);
   }
   public delete(path: string, id: string): Observable<any> {
@@ -23,6 +24,7 @@ export class ApiService {
   }
   public filter(path: string,value: any) {
     if (value) {
+      console.log(this.host + "/" + path + "/filter/" + value);
       return this.http.get(this.host + "/" + path + "/filter/" + value);
     } else {
       return this.get(path);

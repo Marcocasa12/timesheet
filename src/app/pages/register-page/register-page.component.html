@@ -4,35 +4,33 @@
             <img src="Card" src="assets/images/logo.jpg">
         </p-header>
         <div>
-            <span class="ui-float-label">
-                <input id="user" type="text" size="30" pInputText>
-                <label for="user">Username</label>
-            </span>
-            <br>
-            <span class="ui-float-label">
-                <input pPassword type="password" size="30">
-                <label for="float-input">Password</label>
-            </span>
-            <br>
-            <span class="ui-float-label">
-                <input pPassword type="password" size="30">
-                <label for="float-input">Conferma Password</label>
-            </span>
-            <br>
-            <span class="ui-float-label">
-                <input id="user" type="text" size="30" pInputText>
-                <label for="user">Email</label>
-            </span>
+            <form [formGroup]="formgroup">
+                <div class="form-group col"><span class="ui-float-label">
+                        <input type="text" size="30" formControlName="name" pInputText>
+                        <label for="user">Username</label>
+                    </span>
+                </div>
+                <br>
+                <div class="form-group col"><span class="ui-float-label">
+                        <input pInputText type="password" size="30" formControlName="password">
+                        <label for="float-input">Password</label>
+                    </span>
+                </div>
+                <br>
+                <div class="form-group col"><span class="ui-float-label">
+                    <input pInputText type="text" size="30" formControlName="ruolo">
+                    <label for="float-input">Ruolo</label>
+                </span>
+            </div>
+            </form>
+
         </div>
         <p-footer>
-
-
-            <button pButton type="button" label="Save" icon="pi pi-check" style="margin-right: .25em"><i
-                    class="pi pi-check">Register</i></button>
+            <button pButton type="button" label="Save" icon="pi pi-check" style="margin-right: .25em"
+                (click)="conferma()"><i class="pi pi-check">Register</i></button>
             <br>
             <button type="button" class="btn btn-secondar" style="background-color: transparent;"
-                (click)="onClickLogin()">Login</button>
-
+            (click)="onClickLogin()">Login</button>
         </p-footer>
     </p-card>
 </div>

@@ -4,27 +4,18 @@ import { Observable } from "rxjs";
 @Injectable({
   providedIn: "root"
 })
-export class DipendentiService {
+export class UserService {
   constructor(private api: ApiService) {}
-  private readonly path = "employees";
+  private readonly path = "user";
 
   public getAll(): Observable<any> {
     return this.api.get(this.path);
-  }
-  getById(id: string) {
-    return this.api.get(this.path + "/fetchOnce/employee/" + id);
   }
   add(item: any): Observable<any> {
     const obj = { ...item };
     return this.api.post(this.path, obj);
   }
-  public deleteById(id: string): Observable<any> {
-    return this.api.delete(this.path, id);
-  }
-  replace(item: any): Observable<any> {
-    return this.api.replace(this.path, item.id, item);
-  }
-  filter(value: any) {
+  filter(value: any):any {
     return this.api.filter(this.path,value);
   }
 }

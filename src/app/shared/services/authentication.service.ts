@@ -26,7 +26,7 @@ const credentialsKey = 'token';
 @Injectable()
 export class AuthenticationService {
 
-  public token: boolean = false;
+  public token: any;
 
   private path: string = "user";
 
@@ -43,8 +43,8 @@ export class AuthenticationService {
    * @param {LoginContext} context The login parameters.
    * @return {Observable<Credentials>} The user credentials.
    */
-  login(param: any): Observable<any> {    
-    return this.api.filter(this.path + "/login", param);
+  login(param: any): Observable<any> {   
+    return this.api.filter(this.path, param);
   }
 
   /**
@@ -67,7 +67,7 @@ export class AuthenticationService {
    * @return {boolean} True if the user is authenticated.
    */
 
-  isAuthenticated(): boolean {
+  isAuthenticated(): any {
     try {
       return (this.token);
     } catch (e) {
@@ -75,14 +75,32 @@ export class AuthenticationService {
     }
   }
 
-  setAuthenticated(): boolean {
+  setAuthenticated(usr:any, rl:any): boolean {
     try {
-      this.token = true;
+      this.token = this.genToken;
+      console.log(this.token);
       return (this.token);
     } catch (e) {
       return false;
     }
   }
+
+  genToken(usr: any, rl:any):any {
+    var subT = usr;
+    var nJwt = require('njwt');
+    var secureRandom = require('secure-random');
+
+    var signingKey = secureRandom(256, { type: 'Buffer' }); // Create a highly random byte array of 256 bytes
+
+    var claims = {
+      iss: "localhost:8090/api/dipendenti",  // The URL of your service
+      sub: subT,    // The UID of the user in your system
+      scope: rl
+    }
+
+    var jwt = nJwt.create(claims, signingKey);
+  }
+
 
   /**
    * Gets the user credentials.
